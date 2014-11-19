@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nombre: MyString
+  numTlf: 1
+  user: 
+
+two:
+  nombre: MyString
+  numTlf: 1
+  user: 

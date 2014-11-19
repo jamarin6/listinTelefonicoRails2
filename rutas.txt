@@ -1,0 +1,16 @@
+    user_contacts GET    /users/:user_id/contacts(.:format)          contacts#index
+                  POST   /users/:user_id/contacts(.:format)          contacts#create
+ new_user_contact GET    /users/:user_id/contacts/new(.:format)      contacts#new
+edit_user_contact GET    /users/:user_id/contacts/:id/edit(.:format) contacts#edit
+     user_contact GET    /users/:user_id/contacts/:id(.:format)      contacts#show
+                  PUT    /users/:user_id/contacts/:id(.:format)      contacts#update
+                  DELETE /users/:user_id/contacts/:id(.:format)      contacts#destroy
+            users GET    /users(.:format)                            users#index
+                  POST   /users(.:format)                            users#create
+         new_user GET    /users/new(.:format)                        users#new
+        edit_user GET    /users/:id/edit(.:format)                   users#edit
+             user GET    /users/:id(.:format)                        users#show
+                  PUT    /users/:id(.:format)                        users#update
+                  DELETE /users/:id(.:format)                        users#destroy
+    welcome_index GET    /welcome/index(.:format)                    welcome#index
+             root        /                                           welcome#index

@@ -1,4 +1,11 @@
 ListinRoR::Application.routes.draw do
+
+
+  resources :users do
+    resources :contacts
+  end
+
+
   get "welcome/index"
 
   # The priority is based upon order of creation:
