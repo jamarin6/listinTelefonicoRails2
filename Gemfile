@@ -36,3 +36,16 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+group :development, :test do
+
+ gem 'annotate'  # annotate, annotate --delete
+ gem "rails-erd"     #gema para sacar diagramas de clases del modelo: rake erd
+ gem 'better_errors' #gema para mostrar errores en desarrollo
+ gem 'rails_best_practices'     # gema para control de calidad del codigo: bundle exec rails_best_practices .
+ gem "letter_opener" #gema para visualizar mails
+ gem 'byebug'
+ 
+ gem 'xray-rails'
+
+ gem 'bullet'
+end
