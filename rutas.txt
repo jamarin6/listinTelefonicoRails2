@@ -1,16 +1,30 @@
-    user_contacts GET    /users/:user_id/contacts(.:format)          contacts#index
-                  POST   /users/:user_id/contacts(.:format)          contacts#create
- new_user_contact GET    /users/:user_id/contacts/new(.:format)      contacts#new
-edit_user_contact GET    /users/:user_id/contacts/:id/edit(.:format) contacts#edit
-     user_contact GET    /users/:user_id/contacts/:id(.:format)      contacts#show
-                  PUT    /users/:user_id/contacts/:id(.:format)      contacts#update
-                  DELETE /users/:user_id/contacts/:id(.:format)      contacts#destroy
-            users GET    /users(.:format)                            users#index
-                  POST   /users(.:format)                            users#create
-         new_user GET    /users/new(.:format)                        users#new
-        edit_user GET    /users/:id/edit(.:format)                   users#edit
-             user GET    /users/:id(.:format)                        users#show
-                  PUT    /users/:id(.:format)                        users#update
-                  DELETE /users/:id(.:format)                        users#destroy
-    welcome_index GET    /welcome/index(.:format)                    welcome#index
-             root        /                                           welcome#index
+       admin_users GET    /admin/users(.:format)                      admin/users#index
+                   POST   /admin/users(.:format)                      admin/users#create
+    new_admin_user GET    /admin/users/new(.:format)                  admin/users#new
+   edit_admin_user GET    /admin/users/:id/edit(.:format)             admin/users#edit
+        admin_user GET    /admin/users/:id(.:format)                  admin/users#show
+                   PUT    /admin/users/:id(.:format)                  admin/users#update
+                   DELETE /admin/users/:id(.:format)                  admin/users#destroy
+    admin_contacts GET    /admin/contacts(.:format)                   admin/contacts#index
+                   POST   /admin/contacts(.:format)                   admin/contacts#create
+ new_admin_contact GET    /admin/contacts/new(.:format)               admin/contacts#new
+edit_admin_contact GET    /admin/contacts/:id/edit(.:format)          admin/contacts#edit
+     admin_contact GET    /admin/contacts/:id(.:format)               admin/contacts#show
+                   PUT    /admin/contacts/:id(.:format)               admin/contacts#update
+                   DELETE /admin/contacts/:id(.:format)               admin/contacts#destroy
+     user_contacts GET    /users/:user_id/contacts(.:format)          contacts#index
+                   POST   /users/:user_id/contacts(.:format)          contacts#create
+  new_user_contact GET    /users/:user_id/contacts/new(.:format)      contacts#new
+ edit_user_contact GET    /users/:user_id/contacts/:id/edit(.:format) contacts#edit
+      user_contact GET    /users/:user_id/contacts/:id(.:format)      contacts#show
+                   PUT    /users/:user_id/contacts/:id(.:format)      contacts#update
+                   DELETE /users/:user_id/contacts/:id(.:format)      contacts#destroy
+             users GET    /users(.:format)                            users#index
+                   POST   /users(.:format)                            users#create
+          new_user GET    /users/new(.:format)                        users#new
+         edit_user GET    /users/:id/edit(.:format)                   users#edit
+              user GET    /users/:id(.:format)                        users#show
+                   PUT    /users/:id(.:format)                        users#update
+                   DELETE /users/:id(.:format)                        users#destroy
+     welcome_index GET    /welcome/index(.:format)                    welcome#index
+              root        /                                           welcome#index

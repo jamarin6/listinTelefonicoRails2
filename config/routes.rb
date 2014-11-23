@@ -1,9 +1,13 @@
 ListinRoR::Application.routes.draw do
 
+  namespace :admin do
+    resources :users, :contacts
+  end
 
   resources :users do
     resources :contacts
   end
+
 
 
   get "welcome/index"

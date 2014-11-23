@@ -2,7 +2,8 @@ class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.json
   def index
-    @contacts = Contact.all
+    user = User.find(params[:user])
+    @contacts = user.contacts
 
     respond_to do |format|
       format.html # index.html.erb
@@ -40,11 +41,13 @@ class ContactsController < ApplicationController
   # POST /contacts
   # POST /contacts.json
   def create
-    @contact = Contact.new(params[:contact])
+    @user = User.find(params[:user_id])
+    #@user.contacts = Contact.new(params[:contact])
+    @contact = @user.contact.create(params[:contact])
 
     respond_to do |format|
       if @contact.save
-        format.html { redirect_to @contact, notice: 'Contact was successfully created.' }
+        format.html { redirect_to @contact, notice: 'Contact was successfully created.' } #manda al show de contact
         format.json { render json: @contact, status: :created, location: @contact }
       else
         format.html { render action: "new" }
