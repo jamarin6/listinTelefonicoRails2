@@ -6,7 +6,6 @@
     <th>Ap1</th>
     <th>Ap2</th>
     <th>Fechanac</th>
-    <th>Padre</th>
     <th></th>
     <th></th>
     <th></th>
@@ -19,15 +18,15 @@
     <td><%= user.ap1 %></td>
     <td><%= user.ap2 %></td>
     <td><%= user.fechaNac %></td>
-    <td><%= user.padre_id %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    <td><%= link_to 'showContacs', user_contacts_path(user) %></td>
+    <td><%= link_to 'Show', [:admin, user] %></td>
+    <td><%= link_to 'Edit', edit_admin_user_path(user) %></td>
+    <td><%= link_to 'Destroy', [:admin, user], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <!--<td><%#= link_to 'showContacs', admin_contacts_path(user) %></td>-->
+    <td><%= link_to 'showContacs', admin_contacts_path %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New User', new_user_path %>
+<%= link_to 'New User', new_admin_user_path %>

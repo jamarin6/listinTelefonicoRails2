@@ -6,9 +6,8 @@
     <th>Ap1</th>
     <th>Ap2</th>
     <th>Fechanac</th>
-    <th>Padre</th>
-    <th></th>
-    <th></th>
+    <!--<th></th>
+    <th></th>-->
     <th></th>
     <th></th>
   </tr>
@@ -19,10 +18,9 @@
     <td><%= user.ap1 %></td>
     <td><%= user.ap2 %></td>
     <td><%= user.fechaNac %></td>
-    <td><%= user.padre_id %></td>
     <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <!--<td><%#= link_to 'Edit', edit_user_path(user) %></td>
+    <td><%#= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
     <td><%= link_to 'showContacs', user_contacts_path(user) %></td>
   </tr>
 <% end %>

@@ -1,4 +1,12 @@
 class Admin::UsersController < ApplicationController
+  before_filter :authenticate
+
+  def authenticate
+    authenticate_or_request_with_http_basic do |name, pass|
+      #User.authenticate(name, pass)
+      name == 'akita' && pass == 'akita'      
+    end
+  end
   # GET /users
   # GET /users.json
   def index
