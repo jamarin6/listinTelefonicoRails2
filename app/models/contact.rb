@@ -12,5 +12,5 @@
 
 class Contact < ActiveRecord::Base
   belongs_to :user
-  attr_accessible :nombre, :numTlf
+  attr_accessible :nombre, :numTlf, :user_id
 end

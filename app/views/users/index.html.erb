@@ -6,8 +6,8 @@
     <th>Ap1</th>
     <th>Ap2</th>
     <th>Fechanac</th>
-    <!--<th></th>
-    <th></th>-->
+    <th></th>
+    <th></th>
     <th></th>
     <th></th>
   </tr>
@@ -19,9 +19,11 @@
     <td><%= user.ap2 %></td>
     <td><%= user.fechaNac %></td>
     <td><%= link_to 'Show', user %></td>
-    <!--<td><%#= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%#= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
-    <td><%= link_to 'showContacs', user_contacts_path(user) %></td>
+    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <!-- por aki .........  viendo la forma correcta de pasar el id de user.id para que el showContacts funcione bien...... -->
+    <td><%= link_to 'showContacts', user_contacts_path(:user_id => user.id) %></td>
+    <td><%= link_to 'newContact', new_user_contact_path(:user_id => user.id) %></td>
   </tr>
 <% end %>
 </table>

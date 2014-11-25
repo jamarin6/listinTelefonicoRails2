@@ -2,8 +2,8 @@ class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.json
   def index
-    user = User.find(params[:user])
-    @contacts = user.contacts
+    @user = User.find(params[:user_id])
+    @contacts = @user.contacts
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,6 +15,7 @@ class ContactsController < ApplicationController
   # GET /contacts/1.json
   def show
     @contact = Contact.find(params[:id])
+    @user = Contact.find(params[:user_id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -26,6 +27,7 @@ class ContactsController < ApplicationController
   # GET /contacts/new.json
   def new
     @contact = Contact.new
+    @user = User.find(params[:user_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,6 +38,7 @@ class ContactsController < ApplicationController
   # GET /contacts/1/edit
   def edit
     @contact = Contact.find(params[:id])
+    @user = User.find(params[:user_id])
   end
 
   # POST /contacts
@@ -43,11 +46,12 @@ class ContactsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     #@user.contacts = Contact.new(params[:contact])
-    @contact = @user.contact.create(params[:contact])
+    @contact = @user.contacts.create(params[:contact])
 
     respond_to do |format|
       if @contact.save
-        format.html { redirect_to @contact, notice: 'Contact was successfully created.' } #manda al show de contact
+        format.html { redirect_to user_contact_path(@user, @contact), notice: 'Contact was successfully created.' } #manda al show de contact
+        #format.html { redirect_to @contact, notice: 'Contact was successfully created.' } #manda al show de contact
         format.json { render json: @contact, status: :created, location: @contact }
       else
         format.html { render action: "new" }
@@ -75,11 +79,12 @@ class ContactsController < ApplicationController
   # DELETE /contacts/1
   # DELETE /contacts/1.json
   def destroy
+    @user = User.find(params[:user_id])
     @contact = Contact.find(params[:id])
     @contact.destroy
 
     respond_to do |format|
-      format.html { redirect_to contacts_url }
+      format.html { redirect_to user_contacts_path(@user) }
       format.json { head :no_content }
     end
   end
