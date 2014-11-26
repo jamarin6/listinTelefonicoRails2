@@ -5,7 +5,7 @@ ListinRoR::Application.routes.draw do
   end
 
   resources :users do
-    resources :contacts
+    resources :contacts, :controller => 'users/contacts'
   end
 
 

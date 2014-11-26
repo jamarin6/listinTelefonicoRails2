@@ -12,13 +12,13 @@ edit_admin_contact GET    /admin/contacts/:id/edit(.:format)          admin/cont
      admin_contact GET    /admin/contacts/:id(.:format)               admin/contacts#show
                    PUT    /admin/contacts/:id(.:format)               admin/contacts#update
                    DELETE /admin/contacts/:id(.:format)               admin/contacts#destroy
-     user_contacts GET    /users/:user_id/contacts(.:format)          contacts#index
-                   POST   /users/:user_id/contacts(.:format)          contacts#create
-  new_user_contact GET    /users/:user_id/contacts/new(.:format)      contacts#new
- edit_user_contact GET    /users/:user_id/contacts/:id/edit(.:format) contacts#edit
-      user_contact GET    /users/:user_id/contacts/:id(.:format)      contacts#show
-                   PUT    /users/:user_id/contacts/:id(.:format)      contacts#update
-                   DELETE /users/:user_id/contacts/:id(.:format)      contacts#destroy
+     user_contacts GET    /users/:user_id/contacts(.:format)          users/contacts#index
+                   POST   /users/:user_id/contacts(.:format)          users/contacts#create
+  new_user_contact GET    /users/:user_id/contacts/new(.:format)      users/contacts#new
+ edit_user_contact GET    /users/:user_id/contacts/:id/edit(.:format) users/contacts#edit
+      user_contact GET    /users/:user_id/contacts/:id(.:format)      users/contacts#show
+                   PUT    /users/:user_id/contacts/:id(.:format)      users/contacts#update
+                   DELETE /users/:user_id/contacts/:id(.:format)      users/contacts#destroy
              users GET    /users(.:format)                            users#index
                    POST   /users(.:format)                            users#create
           new_user GET    /users/new(.:format)                        users#new
