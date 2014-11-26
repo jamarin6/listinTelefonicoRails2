@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
+    @padre = User.find(params[:padre_id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,6 +26,7 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
+    @padre = User.find(params[:id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,10 +43,11 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
+    #@padre = User.find(params[:padre_id])
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to user_path(:id => @user.id, :padre_id => @user.padre_id), notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }

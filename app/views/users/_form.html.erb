@@ -27,10 +27,12 @@
     <%= f.label :fechaNac %><br />
     <%= f.date_select :fechaNac %>
   </div>
-  <div class="field">
-    <%= f.label :padre_id %><br />
-    <%= f.number_field :padre_id %>
+
+  <!--<%#= f.hidden_field :task_id, :value => task.id%> -->
+  <div class="field"> <!-- este campo oculto, "@padre.id" es el id del padre-->
+    <%= f.hidden_field :padre_id, :value => @padre.id %><br />
   </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

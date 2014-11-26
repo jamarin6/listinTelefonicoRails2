@@ -14,7 +14,7 @@
   <tr>
     <td><%= contact.nombre %></td>
     <td><%= contact.numTlf %></td>
-    <td><%= contact.user_id %></td>
+    <td><%= contact.user.nombre %></td>
     <td><%= link_to 'Show', user_contact_path(contact.user, contact) %></td>
     <td><%= link_to 'Edit', edit_user_contact_path(contact.user, contact) %></td>
     <td><%= link_to 'Destroy', user_contact_path(:user_id => contact.user_id, :id => contact), method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -24,5 +24,7 @@
 
 <br/>
 
-<%= link_to 'New Contact', new_user_contact_path(@user) %>
-<%= link_to 'BackToUser', user_path(@user) %>
+<%= link_to 'New Contact', new_user_contact_path(@user) %> -- 
+<%= link_to 'BackToUser', user_path(@user) %> -- 
+<%= link_to 'AllUsers', users_path %>
+

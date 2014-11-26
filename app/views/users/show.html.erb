@@ -16,13 +16,23 @@
 </p>
 
 <p>
-  <b>Fechanac:</b>
+  <b>FechaNac:</b>
   <%= @user.fechaNac %>
 </p>
 
 <p>
+  <b>id:</b>
+  <%= @user.id %>
+</p>
+
+<p>
   <b>Padre:</b>
-  <%= @user.padre_id %>
+  <%= @padre.nombre %>
+</p>
+
+<p>
+  <b>Hijos:</b>
+  <%= @user.contacts.count %>
 </p>
 
 <%= link_to 'Contacts', user_contacts_path(@user) %> - 
