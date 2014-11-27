@@ -31,8 +31,20 @@
 </p>
 
 <p>
-  <b>Hijos:</b>
-  <%= @user.contacts.count %>
+
+  <b>HijosZ:</b>
+
+    <% if @userSons.count == 0 %>
+      <h3>----- No tiene hijos -----</h3>
+
+    <% else %>
+      <% @userSons.each do |son| %>
+        <ul>
+          <li><%= son.nombre %></li> <!-- añadir link a ese hijo user para ir al show de ese hijo user-->
+        </ul>
+      <% end %>
+    <% end %>
+
 </p>
 
 <%= link_to 'Contacts', user_contacts_path(@user) %> - 

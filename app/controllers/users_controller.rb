@@ -14,7 +14,14 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    @padre = User.find(params[:padre_id])
+
+    if params[:padre_id].present? #si viene el parametro :padre_id lo cojo
+      @padre = User.find(params[:padre_id])
+    else
+      @padre = @user #y si no viene xq no tenga padre (superUser), le digo q el padre es el mismo user
+    end
+
+    @userSons = User.where(padre_id: @user.id)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -43,7 +50,6 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
-    #@padre = User.find(params[:padre_id])
 
     respond_to do |format|
       if @user.save
