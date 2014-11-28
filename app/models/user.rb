@@ -15,4 +15,19 @@
 class User < ActiveRecord::Base
   has_many :contacts, :dependent => :destroy
   attr_accessible :ap1, :ap2, :fechaNac, :nombre, :padre_id
+
+
+  validates_uniqueness_of :nombre, scope: [:ap1, :ap2]
+
+  ################# para validar mediante una función y q t permita hacer cualquier tipo de validación ##################
+  #
+  # validate :custom_validation
+  #
+  # def custom_validation
+  #   if !nombre.start_with?('J')
+  #	 	errors.add(:nombre, 'El nombre no empieza por J')
+  #	  end
+  # end
+  #
+  #######################################################################################################################
 end

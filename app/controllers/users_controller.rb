@@ -50,13 +50,16 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
+    #@padre = User.find(params[:padre_id])
 
     respond_to do |format|
       if @user.save
         format.html { redirect_to user_path(:id => @user.id, :padre_id => @user.padre_id), notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
-        format.html { render action: "new" }
+        #format.html { redirect_to users_path, notice: @user.errors.messages[:nombre] } #muestra los errores guardados en :nombre
+        #format.html { redirect_to new_user_path(:id => params[:padre.id]) }
+        format.html { redirect_to users_path, notice: @user.errors.messages }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
