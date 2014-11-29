@@ -60,6 +60,8 @@ class UsersController < ApplicationController
         #format.html { redirect_to users_path, notice: @user.errors.messages[:nombre] } #muestra los errores guardados en :nombre
         #format.html { redirect_to new_user_path(:id => params[:padre.id]) }
         format.html { redirect_to users_path, notice: @user.errors.messages }
+        #format.html { redirect_to new_user_path, notice: @user.errors.messages }
+
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end

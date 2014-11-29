@@ -16,18 +16,24 @@
 </p>
 
 <p>
-  <b>FechaNac:</b>
+  <b>Date of birth:</b>
   <%= @user.fechaNac %>
 </p>
 
 <p>
-  <b>id:</b>
+  <b>ID:</b>
   <%= @user.id %>
 </p>
 
 <p>
-  <b>Padre:</b>
+  <b>Father:</b>
   <%= @padre.nombre %>
+</p>
+
+<p>
+  <b>Contacts:</b>
+  <%#= @user.contacts.count %>  <!--numbers  -->
+  <%= link_to "#{@user.contacts.count} numbers", user_contacts_path(@user) %><%= " " %>
 </p>
 
 <p>

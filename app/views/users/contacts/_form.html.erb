@@ -20,7 +20,7 @@
     <%= f.number_field :numTlf %>
   </div>
   <div class="field">
-    <%= f.hidden_field :user_id, :value => @user.id %><br /><!-- poner este campo oculto con valor del user.id -->
+    <%= f.hidden_field :user_id, :value => @user.id %><br /><!-- campo oculto q se pasa para saber el padre -->
   </div>
 
   <div class="actions">
