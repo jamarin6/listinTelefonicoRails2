@@ -1,12 +1,11 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.json
+
+  before_filter :set_users_empty, :only=>[:index, :create, :update]
+  
   def index
     @users = User.all
-
-    if @users.empty?
-      @usersEmpty = true
-    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -19,13 +18,32 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
-    if params[:padre_id].present? #si viene el parametro :padre_id lo cojo
-      @padre = User.find(params[:padre_id])
+   ### #if params[:padre_id].present? #si viene el parametro :padre_id lo cojo
+
+      #@numPadres = User.count(id: :padre_id)
+      isFather = User.find(params[:padre_id]) rescue nil
+
+      if (isFather == nil)
+        #no hay user padre
+        @noFather = true
+      else
+        #hay user
+        @noFather = false
+        @padre = User.find(params[:padre_id])
+      end
+
+      #if (@numPadres > 0) #si existe padre se podrá pintar
+      #  @padre = User.find(params[:padre_id])
+      #else
+        #el padre ya fué borrado
+        #@padre.nombre = "he was deleted"
+      #end
+
     #else
       #@padre = nil #y si no viene xq no tenga padre (superUser), le digo q el padre no exite, = nill
-    end
+   ### #end
 
-    @userSons = User.where(padre_id: @user.id)
+    @userSons = User.where(padre_id: @user.id) #cojo los hijos de ese user
 
     respond_to do |format|
       format.html # show.html.erb
@@ -84,7 +102,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     respond_to do |format|
-      if @user.update_attributes(params[:user])
+      if @user.update_attributes(params[:user].except(:padre_id)) # mirar remove para no actualizar el padre_id 
+        #  if @user.update_attributes(params[:user]).except(:padre_id)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
@@ -104,6 +123,12 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url }
       format.json { head :no_content }
     end
+  end
+
+  private 
+
+  def set_users_empty 
+    @users_empty = (User.count == 0)
   end
 
 end

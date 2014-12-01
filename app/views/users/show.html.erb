@@ -25,14 +25,20 @@
   <%= @user.id %>
 </p>
 
+
+
 <p>
   <b>Father:</b>
-  <% if (@user.id == @user.padre_id) %>
+  <% if (@user.id == @user.padre_id) %> <!-- si el user y el padre son el mismo es q es el superUser -->
     SuperUser (no father)
-  <% else %>
-    <%= @padre.nombre %>
+  <% elsif (@noFather == true) %>  <!--si no hay padre se pone que fue borrado -->
+     father was deleted
+  <% else %> <!--si hay padre se pinta su nombre TODO: HACER ESTO LINK PARA IR AL SHOW DEL PADRE -->
+    <%= @padre.nombre %> hacer esto link
   <% end %>
 </p>
+
+
 
 <!--<p>
   <b>user.padre_ID:</b>
@@ -46,22 +52,19 @@
 </p>
 
 <p>
-
   <b>Hijos:</b>
 
-    <% if @userSons.count == 0 %>
-      <h3>----- No tiene hijos -----</h3>
-
-    <% else %>
-      <% @userSons.each do |son| %>
-        <ul>
-          <% if !(son.id == @user.id) %><!-- para q no muestre el superUser a el mismo como hijo (xq su id es = al padre_id) -->
-            <li><%= link_to son.nombre, user_path(:id => son.id, :padre_id => son.padre_id) %></li>
-          <% end %>
-        </ul>
-      <% end %>
+  <% if @userSons.count == 0 %> <!-- si no tiene hijos lo informo -->
+    <h3>----- No tiene hijos -----</h3>
+  <% else %>
+    <% @userSons.each do |son| %>
+      <ul>
+        <% if !(son.id == @user.id) %><!-- xa q no muestre el superUser a él mismo como hijo (xq su id es = al del hijo) -->
+          <li><%= link_to son.nombre, user_path(:id => son.id, :padre_id => son.padre_id) %></li>
+        <% end %>
+      </ul>
     <% end %>
-
+  <% end %>
 </p>
 
 <%= link_to 'Contacts', user_contacts_path(@user) %> - 

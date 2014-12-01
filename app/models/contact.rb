@@ -13,4 +13,8 @@
 class Contact < ActiveRecord::Base
   belongs_to :user
   attr_accessible :nombre, :numTlf, :user_id
+
+  validates :nombre, :numTlf, :user_id, presence: true
+  validates :nombre, :numTlf, length: { maximum: 20 }
+  validates :nombre, :numTlf, uniqueness: true
 end
