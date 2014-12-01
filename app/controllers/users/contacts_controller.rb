@@ -15,7 +15,7 @@ class Users::ContactsController < ApplicationController
   # GET /contacts/1.json
   def show
     @contact = Contact.find(params[:id])
-    @user = Contact.find(params[:user_id])
+    @user = User.find(params[:user_id])
 
     respond_to do |format|
       format.html # show.html.erb

@@ -4,6 +4,10 @@ class UsersController < ApplicationController
   def index
     @users = User.all
 
+    if @users.empty?
+      @usersEmpty = true
+    end
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @users }
@@ -17,8 +21,8 @@ class UsersController < ApplicationController
 
     if params[:padre_id].present? #si viene el parametro :padre_id lo cojo
       @padre = User.find(params[:padre_id])
-    else
-      @padre = @user #y si no viene xq no tenga padre (superUser), le digo q el padre es el mismo user
+    #else
+      #@padre = nil #y si no viene xq no tenga padre (superUser), le digo q el padre no exite, = nill
     end
 
     @userSons = User.where(padre_id: @user.id)
@@ -33,7 +37,14 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
-    @padre = User.find(params[:id])
+    #@padre = User.find(params[:id])
+
+    if params[:id].present? #si viene el parametro :id lo cojo y es el id del padre  ########################
+      @padre = User.find(params[:id])
+     else
+      #@padre = @user #y si no viene xq no tenga padre (superUser), le digo q el padre es el mismo user
+      @padre = nil
+    end
 
     respond_to do |format|
       format.html # new.html.erb

@@ -27,12 +27,21 @@
 
 <p>
   <b>Father:</b>
-  <%= @padre.nombre %>
+  <% if (@user.id == @user.padre_id) %>
+    SuperUser (no father)
+  <% else %>
+    <%= @padre.nombre %>
+  <% end %>
 </p>
+
+<!--<p>
+  <b>user.padre_ID:</b>
+  <%= @user.padre_id %>
+</p>-->
+
 
 <p>
   <b>Contacts:</b>
-  <%#= @user.contacts.count %>  <!--numbers  -->
   <%= link_to "#{@user.contacts.count} numbers", user_contacts_path(@user) %><%= " " %>
 </p>
 
@@ -46,7 +55,9 @@
     <% else %>
       <% @userSons.each do |son| %>
         <ul>
-          <li><%= son.nombre %></li> <!-- añadir link a ese hijo user para ir al show de ese hijo user-->
+          <% if !(son.id == @user.id) %><!-- para q no muestre el superUser a el mismo como hijo (xq su id es = al padre_id) -->
+            <li><%= link_to son.nombre, user_path(:id => son.id, :padre_id => son.padre_id) %></li>
+          <% end %>
         </ul>
       <% end %>
     <% end %>

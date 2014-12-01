@@ -13,7 +13,12 @@
   </tr>
 
 <% @users.each do |user| %>
-  <tr>
+<!--<%# if user.padre_id == user.id %>
+  <tr class="SuperUser">
+<% #else %>
+  <tr class="NormalUser">
+<% #end %>
+-->
     <td><%= user.nombre %></td>
     <td><%= user.ap1 %></td>
     <td><%= user.ap2 %></td>
@@ -25,10 +30,15 @@
     <!-- por aki .........  viendo la forma correcta de pasar el id de user.id para que el showContacts funcione bien...... -->
     <td><%= link_to 'PhoneBook', user_contacts_path(:user_id => user.id) %>   -</td>
     <td><%= link_to 'AddUser', new_user_path(:id => user.id) %></td>
+    <% if user.padre_id == user.id %>
+      <td class="SuperUser"> <small>(SuperUser)</small></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New User', new_user_path %>
+<% if @usersEmpty %>
+  <%= link_to 'New SuperUser', new_user_path %> <!--TO DO: solo mostrar si no hay users-->
+<% end %>
