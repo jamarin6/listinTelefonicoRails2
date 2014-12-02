@@ -25,26 +25,16 @@
   <%= @user.id %>
 </p>
 
-
-
 <p>
   <b>Father:</b>
   <% if (@user.id == @user.padre_id) %> <!-- si el user y el padre son el mismo es q es el superUser -->
     SuperUser (no father)
   <% elsif (@noFather == true) %>  <!--si no hay padre se pone que fue borrado -->
      father was deleted
-  <% else %> <!--si hay padre se pinta su nombre TODO: HACER ESTO LINK PARA IR AL SHOW DEL PADRE -->
-    <%= @padre.nombre %> hacer esto link
+  <% else %> <!--si hay padre se pinta su nombre -->
+  <%= link_to @father_user.nombre, user_path(@user.padre_id) %>
   <% end %>
 </p>
-
-
-
-<!--<p>
-  <b>user.padre_ID:</b>
-  <%= @user.padre_id %>
-</p>-->
-
 
 <p>
   <b>Contacts:</b>
