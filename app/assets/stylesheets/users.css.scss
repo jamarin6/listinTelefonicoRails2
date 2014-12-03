@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body {
+	background-color: #B8B8B8;
+}
+
 .SuperUser {
 	background-color: yellow;
 }
@@ -17,3 +21,50 @@
   float: none;
   margin: 0 auto;
 }
+
+
+.table tbody tr:hover td {
+  background-color: orange;
+}
+
+
+
+.table-striped > tbody > tr:nth-child(odd), .table-striped > tbody > tr:nth-child(n) {
+  background-color: #999999;
+  border: solid 1px #B8B8B8;
+  /*border-radius: 25px;*/
+  &:hover{
+  	background-color: orange;
+  };
+  td {
+  border: solid 1px #B8B8B8;
+  border-radius: 25px;
+  }
+  th {
+  border: solid 1px #B8B8B8;
+  border-radius: 25px;
+  }
+}
+
+
+
+/*.table-striped tbody tr:nth-child(odd):hover td {
+   background-color: #F9F9F9;
+}*/
+
+/*
+.table-hover tbody tr:hover td {
+  background-color: #FFFFFF;
+}
+
+.table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(n) > th { *//*linea impar*/
+ /* background-color: #999999;
+  border: solid 1px #B8B8B8;
+  border-radius: 25px;
+}*/
+/*
+.table-striped > tbody > tr:nth-child(even) > td { *//*linea par*/
+ /* background-color: #CCCCCC;
+  border: solid 1px #B8B8B8;
+  border-radius: 25px;*//*
+}*/

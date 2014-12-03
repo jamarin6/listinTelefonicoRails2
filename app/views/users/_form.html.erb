@@ -28,15 +28,8 @@
     <%= f.date_select :fechaNac %>
   </div>
 
-  <% if @padre == nil %>
-    <div class="field"> <!-- este campo oculto, "@padre.id" es el id del user xq no viene padre-->
-      <%= f.hidden_field :padre_id, :value => @user.id %><br />
-    </div>
-  <% else %>
-    <div class="field"> <!-- este campo oculto, "@padre.id" es el id del padre xq SI q tiene padre-->
-      <%= f.hidden_field :padre_id, :value => @padre.id %><br />
-    </div>
-  <% end %>
+  <%= f.hidden_field :padre_id %>
+  
 
   <div class="actions">
     <%= f.submit %>

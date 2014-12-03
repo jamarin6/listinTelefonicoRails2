@@ -36,15 +36,7 @@ class UsersController < ApplicationController
   # GET /users/new
   # GET /users/new.json
   def new
-    @user = User.new
-    #@padre = User.find(params[:id])
-
-    if params[:id].present? #si viene el parametro :id lo cojo y es el id del padre  ########################
-      @padre = User.find(params[:id])
-     else
-      #@padre = @user #y si no viene xq no tenga padre (superUser), le digo q el padre es el mismo user
-      @padre = nil
-    end
+    @user = User.new(:padre_id=>params[:padre_id]) #TODO: comprobar al crear superUser q no manda padre_id
 
     respond_to do |format|
       format.html # new.html.erb
@@ -60,6 +52,8 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    #TODO: comprobar q el padre exite
+    
     @user = User.new(params[:user])
 
     respond_to do |format|
@@ -67,8 +61,8 @@ class UsersController < ApplicationController
         format.html { redirect_to user_path(@user.id), notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
-        format.html { redirect_to users_path, notice: @user.errors.messages }
-        #format.html { redirect_to new_user_path, notice: @user.errors.messages } #para ir al new necesitaría :padre_id
+        ###format.html { redirect_to users_path, notice: @user.errors.messages } #ir a users/index
+        format.html { render action: "new" } #me renderiza al new con los valores q ya estén tras el _form
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -80,8 +74,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     respond_to do |format|
-      if @user.update_attributes(params[:user].except(:padre_id)) # mirar remove para no actualizar el padre_id 
-        #  if @user.update_attributes(params[:user]).except(:padre_id)
+      if @user.update_attributes(params[:user].except(:padre_id)) 
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
