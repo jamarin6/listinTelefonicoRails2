@@ -1,62 +1,75 @@
-<p id="notice"><%= notice %></p>
+<br><br>
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <div class="row">
+    <div class="col-lg-4 col-lg-offset-4">
+      <p class="centra">
+        <b>Nombre:</b>
+        <%= @user.nombre %>
+      </p>
 
-<p>
-  <b>Nombre:</b>
-  <%= @user.nombre %>
-</p>
+      <p class="centra">
+        <b>Ap1:</b>
+        <%= @user.ap1 %>
+      </p>
 
-<p>
-  <b>Ap1:</b>
-  <%= @user.ap1 %>
-</p>
+      <p class="centra">
+        <b>Ap2:</b>
+        <%= @user.ap2 %>
+      </p>
 
-<p>
-  <b>Ap2:</b>
-  <%= @user.ap2 %>
-</p>
+      <p class="centra">
+        <b>Date of birth:</b>
+        <%= @user.fechaNac %>
+      </p>
 
-<p>
-  <b>Date of birth:</b>
-  <%= @user.fechaNac %>
-</p>
+      <p class="centra">
+        <b>ID:</b>
+        <%= @user.id %>
+      </p>
 
-<p>
-  <b>ID:</b>
-  <%= @user.id %>
-</p>
-
-<p>
-  <b>Father:</b>
-  <% if (@user.id == @user.padre_id) %> <!-- si el user y el padre son el mismo es q es el superUser -->
-    SuperUser (no father)
-  <% elsif (@noFather == true) %>  <!--si no hay padre se pone que fue borrado -->
-     father was deleted
-  <% else %> <!--si hay padre se pinta su nombre -->
-  <%= link_to @father_user.nombre, user_path(@user.padre_id) %>
-  <% end %>
-</p>
-
-<p>
-  <b>Contacts:</b>
-  <%= link_to "#{@user.contacts.count} numbers", user_contacts_path(@user) %><%= " " %>
-</p>
-
-<p>
-  <b>Hijos:</b>
-
-  <% if @userSons.count == 0 %> <!-- si no tiene hijos lo informo -->
-    <h3>----- No tiene hijos -----</h3>
-  <% else %>
-    <% @userSons.each do |son| %>
-      <ul>
-        <% if !(son.id == @user.id) %><!-- xa q no muestre el superUser a él mismo como hijo (xq su id es = al del hijo) -->
-          <li><%= link_to son.nombre, user_path(:id => son.id, :padre_id => son.padre_id) %></li>
+      <p class="centra">
+        <b>Father:</b>
+        <% if (@user.id == @user.padre_id) %> <!-- si el user y el padre son el mismo es q es el superUser -->
+          SuperUser (no father)
+        <% elsif (@noFather == true) %>  <!--si no hay padre se pone que fue borrado -->
+           father was deleted
+        <% else %> <!--si hay padre se pinta su nombre -->
+        <%= link_to @father_user.nombre, user_path(@user.padre_id) %>
         <% end %>
-      </ul>
-    <% end %>
-  <% end %>
-</p>
+      </p>
 
-<%= link_to 'Contacts', user_contacts_path(@user) %> - 
-<%= link_to 'Edit', edit_user_path(@user) %> - 
-<%= link_to 'BackToAllUsers', users_path %>
+      <p class="centra">
+        <b>Contacts:</b>
+        <%= link_to "#{@user.contacts.count} numbers", user_contacts_path(@user) %><%= " " %>
+      </p>
+<div class="border-green">
+      <p class="centra border-green">
+        <b>----- Created sons: -----</b>
+
+        <% if @userSons.count == 0 %> <!-- si no tiene hijos lo informo -->
+          <h3 class="centra">----- No tiene hijos -----</h3>
+        <% else %>
+          <ul>
+          <% @userSons.each do |son| %>
+            
+              <% if !(son.id == @user.id) %><!-- xa q no muestre el superUser a él mismo como hijo (xq su id es = al del hijo) -->
+                <li class="centra"><%= link_to son.nombre, user_path(:id => son.id, :padre_id => son.padre_id) %></li>
+              <% end %>
+            </ul>
+          <% end %>
+        <% end %>
+      </p>
+      </div>
+      <p class="centra"><strong>---------------------------------</strong></p>
+      
+    </div>
+  </div>
+
+</div>
+
+<div class="centra">
+  <%= link_to 'Contacts', user_contacts_path(@user) %> - 
+  <%= link_to 'Edit', edit_user_path(@user) %> - 
+  <%= link_to 'BackToAllUsers', users_path %>
+</div>

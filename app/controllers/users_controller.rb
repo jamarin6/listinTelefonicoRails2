@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   # GET /users/new
   # GET /users/new.json
   def new
-    @user = User.new(:padre_id=>params[:padre_id]) #TODO: comprobar al crear superUser q no manda padre_id
+    @user = User.new(:padre_id => params[:padre_id]) #TODO: comprobar al crear superUser q no manda padre_id
 
     respond_to do |format|
       format.html # new.html.erb
@@ -53,11 +53,17 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     #TODO: comprobar q el padre exite
-    
-    @user = User.new(params[:user])
+    father = User.find(params[:padre_id]) rescue nil #mirar q el param tiene q ser de un user
+
+    if father.nil? # el padre no existe ########### AQUI SE METE SIEMPRE EN EL BUCLE
+      #redirect_to users_path, notice: "His father does not exist!!!"   
+      render action: "index" #dsde aqui al index, pero @users es nil, y no hace en la vista d index el bucle .each xq es nil  
+    else
+      @user = User.new(params[:user])
+    end
 
     respond_to do |format|
-      if @user.save
+      if @user.save # dspues d comprobar q el padre no existe viene aqui y no deberia (y falla xq no puede guardar un nil)
         format.html { redirect_to user_path(@user.id), notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else

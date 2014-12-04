@@ -7,8 +7,47 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  																		<!-- header -->
+	<nav class="navbar navbar-inverse navbar-fixed-top opacidad myHeader" role="navigation">
+	  <div class="container">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">      
+	      <a href="#">
+	        <img src="/assets/phoneverde.png" alt="HTML tutorial" style="width:42px;height:42px;padding-top:2px">
+	      </a>
+	    </div>
+
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav">
+	        <li><a href="#">All Contacts</a></li>
+	      </ul>
+	      <ul class="nav navbar-nav navbar-right">
+	        <li><a href="http://www.paginasamarillas.es/">Paginas Amarillas</a></li>
+	      </ul>
+	    </div><!-- /.navbar-collapse -->
+	  </div><!-- /.container -->
+	</nav><br><br>
+																		<!-- fin header -->
+
 <%#= flash[:notice] %> <!-- esto es para q salga x aqui los notice (error or success) -->
 <%= yield %>
+
+																		<!-- footer -->
+<nav class="navbar navbar-inverse navbar-fixed-bottom myFooter opacidad" role="navigation">
+  <div class="container">
+  	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">All contacs</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="https://twitter.com/jamarinhidalgo">@jamarinhidalgo</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>
+</nav>
+													   				<!-- fin footer -->
 
 </body>
 </html>

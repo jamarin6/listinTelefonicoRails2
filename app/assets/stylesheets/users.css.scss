@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body {
-	background-color: #B8B8B8;
+	background-color: #A3DAB6;
 }
 
 .SuperUser {
@@ -24,26 +24,53 @@ body {
 
 
 .table tbody tr:hover td {
-  background-color: orange;
+  /*background-color: #66C285;*/
+  /*background-color: #339e6b;*/
+  background: linear-gradient(to bottom, #A3DAB6 0%, #337D4C 100%);
+  /*background-color: #FFD633;*/
 }
 
 
 
 .table-striped > tbody > tr:nth-child(odd), .table-striped > tbody > tr:nth-child(n) {
-  background-color: #999999;
-  border: solid 1px #B8B8B8;
+  /*background-color: #B8B8B8;*/
+  background-color: #7FE67F;
+  border: solid 1px black;
   /*border-radius: 25px;*/
   &:hover{
   	background-color: orange;
   };
   td {
-  border: solid 1px #B8B8B8;
+  border: solid 1px #A3DAB6;
   border-radius: 25px;
   }
   th {
-  border: solid 1px #B8B8B8;
+  border: solid 8px #A3DAB6;
   border-radius: 25px;
+  background-color: #337D4C;
   }
+}
+
+.opacidad {
+  opacity: 0.92;
+}
+
+.myHeader {
+  border-bottom-color: #2E9C53;
+  border-bottom-width: 4px;
+  border-radius: 0px 0px 60px 60px;
+}
+
+.myFooter {
+  border-top-color: #2E9C53;
+  border-top-width: 4px;
+  border-radius: 60px 60px 0px 0px;
+}
+
+.border-green {
+  border: solid 2px #2E9C53;
+  border-radius: 5px;
+  background-color: #66C285;
 }
 
 
