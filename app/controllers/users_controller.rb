@@ -53,26 +53,50 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     #TODO: comprobar q el padre exite
-    father = User.find(params[:padre_id]) rescue nil #mirar q el param tiene q ser de un user
+    father = User.find(params[:user][:padre_id]) rescue nil 
 
-    if father.nil? # el padre no existe ########### AQUI SE METE SIEMPRE EN EL BUCLE
-      #redirect_to users_path, notice: "His father does not exist!!!"   
-      render action: "index" #dsde aqui al index, pero @users es nil, y no hace en la vista d index el bucle .each xq es nil  
+
+    if father.nil? # el padre no existe
+      redirect_to users_path, notice: "His father does not exist!!!"
+      #render action: "index" #  
     else
       @user = User.new(params[:user])
-    end
-
-    respond_to do |format|
-      if @user.save # dspues d comprobar q el padre no existe viene aqui y no deberia (y falla xq no puede guardar un nil)
-        format.html { redirect_to user_path(@user.id), notice: 'User was successfully created.' }
-        format.json { render json: @user, status: :created, location: @user }
-      else
-        ###format.html { redirect_to users_path, notice: @user.errors.messages } #ir a users/index
-        format.html { render action: "new" } #me renderiza al new con los valores q ya estén tras el _form
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+  
+      respond_to do |format|
+        #debugger
+        if @user.save
+          format.html { redirect_to user_path(@user.id), notice: 'User was successfully created.' }
+          format.json { render json: @user, status: :created, location: @user }
+        else
+          ###format.html { redirect_to users_path, notice: @user.errors.messages } #ir a users/index
+          format.html { render action: "new" } #me renderiza al new con los valores q ya estén tras el _form
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
       end
     end
-  end
+##################################################################################################################
+# Otra forma de hacerlo, interesante el "and return" q finaliza las acciones dentro del create y así no continua
+#      if father.nil? # el padre no existe
+#        redirect_to users_path, notice: "His father does not exist!!!" and return
+#        #render action: "index" #  
+#      else
+#        @user = User.new(params[:user])
+#  
+#      end
+#      respond_to do |format|
+#        #debugger
+#        if @user.save
+#          format.html { redirect_to user_path(@user.id), notice: 'User was successfully created.' }
+#          format.json { render json: @user, status: :created, location: @user }
+#        else
+#          ###format.html { redirect_to users_path, notice: @user.errors.messages } #ir a users/index
+#          format.html { render action: "new" } #me renderiza al new con los valores q ya estén tras el _form
+#          format.json { render json: @user.errors, status: :unprocessable_entity }
+#        end
+#      end
+###################################################################################################################
+
+  end # end del create
 
   # PUT /users/1
   # PUT /users/1.json
@@ -97,7 +121,7 @@ class UsersController < ApplicationController
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to users_url }
+      format.html { redirect_to users_url, notice: 'User was successfully deleted.' }
       format.json { head :no_content }
     end
   end

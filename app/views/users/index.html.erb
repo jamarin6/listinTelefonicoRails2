@@ -1,4 +1,14 @@
 <div class="container">
+  <% if notice.nil? %>
+    
+  <% else %>
+    <div class="row"><br>
+      <div class="col-lg-3 border-green">
+        <p id="notice"><%= notice %></p>
+      </div>
+    </div>
+  <% end %>
+
   <h1 class="centra">Listing users</h1><br>
   <div class="row">
     <div class="col-lg-6 col-lg-offset-3">

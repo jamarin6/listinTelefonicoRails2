@@ -37,9 +37,7 @@ body {
   background-color: #7FE67F;
   border: solid 1px black;
   /*border-radius: 25px;*/
-  &:hover{
-  	background-color: orange;
-  };
+ 
   td {
   border: solid 1px #A3DAB6;
   border-radius: 25px;
@@ -73,6 +71,9 @@ body {
   background-color: #66C285;
 }
 
+.green-back {
+  background-color: #A3DAB6;
+}
 
 
 /*.table-striped tbody tr:nth-child(odd):hover td {

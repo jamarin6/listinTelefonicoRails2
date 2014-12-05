@@ -1,6 +1,15 @@
 <br><br>
 <div class="container">
-  <p id="notice"><%= notice %></p>
+  <% if notice.nil? %>
+    
+  <% else %>
+    <div class="row">
+      <div class="col-lg-3 border-green">
+        <p id="notice"><%= notice %></p>
+      </div>
+    </div>
+  <% end %>
+
   <div class="row">
     <div class="col-lg-4 col-lg-offset-4">
       <p class="centra">
