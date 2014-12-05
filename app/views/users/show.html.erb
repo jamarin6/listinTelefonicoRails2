@@ -39,12 +39,10 @@
 
       <p class="centra">
         <b>Father:</b>
-        <% if (@user.id == @user.padre_id) %> <!-- si el user y el padre son el mismo es q es el superUser -->
+        <% if @noFather %> <!-- si no hay padre de ese user es un superUser -->
           SuperUser (no father)
-        <% elsif (@noFather == true) %>  <!--si no hay padre se pone que fue borrado -->
-           father was deleted
         <% else %> <!--si hay padre se pinta su nombre -->
-        <%= link_to @father_user.nombre, user_path(@user.padre_id) %>
+          <%= link_to @father_user.nombre, user_path(@user.padre_id) %>
         <% end %>
       </p>
 
@@ -52,27 +50,26 @@
         <b>Contacts:</b>
         <%= link_to "#{@user.contacts.count} numbers", user_contacts_path(@user) %><%= " " %>
       </p>
-<div class="border-green">
-      <p class="centra border-green">
-        <b>----- Created sons: -----</b>
+      <div class="border-green">
+        <p class="centra border-green">
+          <b>----- Created sons: -----</b>
 
-        <% if @userSons.count == 0 %> <!-- si no tiene hijos lo informo -->
-          <h3 class="centra">----- No tiene hijos -----</h3>
-        <% else %>
-          <ul>
-          <% @userSons.each do |son| %>
-            
-              <% if !(son.id == @user.id) %><!-- xa q no muestre el superUser a él mismo como hijo (xq su id es = al del hijo) -->
-                <li class="centra"><%= link_to son.nombre, user_path(:id => son.id, :padre_id => son.padre_id) %></li>
+          <% if @userSons.count == 0 %> <!-- si no tiene hijos lo informo -->
+            <h3 class="centra">----- No tiene hijos -----</h3>
+          <% else %>
+            <ol>
+              <% @userSons.each do |son| %>
+                <% if !(son.id == @user.id) %><!-- xa q no muestre el superUser a él mismo como hijo (xq su id es = al del hijo) -->
+                  <li class="centra"><%= link_to son.nombre, user_path(:id => son.id, :padre_id => son.padre_id) %></li>
+                <% end %>
               <% end %>
-            </ul>
+            </ol>
           <% end %>
-        <% end %>
-      </p>
+        </p>
+        </div>
+        <p class="centra"><strong>---------------------------------</strong></p>
+        
       </div>
-      <p class="centra"><strong>---------------------------------</strong></p>
-      
-    </div>
   </div>
 
 </div>

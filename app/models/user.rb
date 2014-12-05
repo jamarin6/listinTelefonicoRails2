@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   has_many :contacts, :dependent => :destroy
   attr_accessible :ap1, :ap2, :fechaNac, :nombre, :padre_id
 
-  validates :nombre, :ap1, :ap2, :fechaNac, :padre_id, presence: true
+  validates :nombre, :ap1, :ap2, :fechaNac, presence: true
   validates :nombre, :ap1, :ap2, length: { maximum: 20 }
   validates_uniqueness_of :nombre, scope: [:ap1, :ap2] # xa q no tengan mismo nombre y apellidos !(:nombre + :ap1 + :ap2)
 

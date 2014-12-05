@@ -53,10 +53,13 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     #TODO: comprobar q el padre exite
-    father = User.find(params[:user][:padre_id]) rescue nil 
+    father = User.find(params[:user][:padre_id]) rescue nil # ojo aqui q el parametro :padre_id viene asociado a un :user
+                                                            # x eso se recoge con "params[:user][:padre_id]"
 
 
-    if father.nil? # el padre no existe
+    if (father.nil? & !(set_users_empty)) # si el padre no existe no crear user xq nos están metiendo un padre_id malo
+                                          # y también mirar q User no esté vacío, xq si está vacío es q no hay users
+                                          # y debería dejar entonces pasar al "else" para crear un user-superUser
       redirect_to users_path, notice: "His father does not exist!!!"
       #render action: "index" #  
     else
