@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   # GET /users/new
   # GET /users/new.json
   def new
-    @user = User.new(:padre_id => params[:padre_id]) #TODO: comprobar al crear superUser q no manda padre_id
+    @user = User.new(:padre_id => params[:padre_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -56,25 +56,17 @@ class UsersController < ApplicationController
     father = User.find(params[:user][:padre_id]) rescue nil # ojo aqui q el parametro :padre_id viene asociado a un :user
                                                             # x eso se recoge con "params[:user][:padre_id]"
 
-
-    if (father.nil? & !(set_users_empty)) # si el padre no existe no crear user xq nos están metiendo un padre_id malo
+    if (father.nil? & !(set_users_empty)) # si el padre no existe habiendo users, no crear user xq nos están metiendo un padre_id malo
                                           # y también mirar q User no esté vacío, xq si está vacío es q no hay users
                                           # y debería dejar entonces pasar al "else" para crear un user-superUser
       redirect_to users_path, notice: "His father does not exist!!!"
-      #render action: "index" #  
     else
       @user = User.new(params[:user])
   
-      respond_to do |format|
-        #debugger
-        if @user.save
-          format.html { redirect_to user_path(@user.id), notice: 'User was successfully created.' }
-          format.json { render json: @user, status: :created, location: @user }
-        else
-          ###format.html { redirect_to users_path, notice: @user.errors.messages } #ir a users/index
-          format.html { render action: "new" } #me renderiza al new con los valores q ya estén tras el _form
-          format.json { render json: @user.errors, status: :unprocessable_entity }
-        end
+      if @user.save
+        redirect_to user_path(@user.id), notice: 'User was successfully created.' 
+      else
+        render action: "new"  #me renderiza al new con los valores q ya estén tras el _form
       end
     end
 ##################################################################################################################
