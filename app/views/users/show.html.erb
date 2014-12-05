@@ -57,7 +57,7 @@
           <% if @userSons.count == 0 %> <!-- si no tiene hijos lo informo -->
             <h3 class="centra">----- No tiene hijos -----</h3>
           <% else %>
-            <ol>
+            <ol class="noventa">
               <% @userSons.each do |son| %>
                 <% if !(son.id == @user.id) %><!-- xa q no muestre el superUser a él mismo como hijo (xq su id es = al del hijo) -->
                   <li class="centra"><%= link_to son.nombre, user_path(:id => son.id, :padre_id => son.padre_id) %></li>
@@ -66,6 +66,9 @@
             </ol>
           <% end %>
         </p>
+        </div>
+        <div class="centra box-green2">
+          <%= link_to 'Add New User', new_user_path(:padre_id => @user.id) %>
         </div>
         <p class="centra"><strong>---------------------------------</strong></p>
         
