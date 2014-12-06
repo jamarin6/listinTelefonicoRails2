@@ -51,7 +51,7 @@
         <%= link_to "#{@user.contacts.count} numbers", user_contacts_path(@user) %><%= " " %>
       </p>
       <div class="border-green">
-        <p class="centra border-green">
+        <p class="centra ">
           <b>----- Created sons: -----</b>
 
           <% if @userSons.count == 0 %> <!-- si no tiene hijos lo informo -->
@@ -67,7 +67,7 @@
           <% end %>
         </p>
         </div>
-        <div class="centra box-green2">
+        <div class="centra border-green">
           <%= link_to 'Add New User', new_user_path(:padre_id => @user.id) %>
         </div>
         <p class="centra"><strong>---------------------------------</strong></p>
