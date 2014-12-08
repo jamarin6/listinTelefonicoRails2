@@ -1,6 +1,24 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
-<h1>Hello Rails!</h1>
-<h2>PAGINA DE BIENVENIDA / HOME</h2>
+<br><br>
 
-<%= link_to "users/index", users_path %>
+<div class="container">
+	<h2 class="centra">Are you ready for LISTÍN!!! ?</h2><br>
+
+	<!-- Carrousel -->
+
+
+	<div class="row text-center">
+		<img src="/assets/moviles.jpg" class="img-rounded" alt="Responsive image" style="width:70%;height:30%;padding-top:2px"><br>
+	</div>
+
+
+
+	<!-- Botón al user/index -->
+	<div class="row">
+		<div class="col-lg-8 col-lg-offset-2">
+			<br><%= link_to "users/index", users_path, method: :get, :class => 'btn btn-success btn-lg btn-block' %>		
+		</div>
+	</div>
+</div>
+
+<!--
+<img src="/assets/phoneverde.png" alt="HTML tutorial" style="width:42px;height:42px;padding-top:2px"> -->
