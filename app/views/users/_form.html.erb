@@ -1,43 +1,147 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-4 col-lg-offset-4 centra">
-      <%= form_for(@user) do |f| %>
+      <%= form_for(@user, html: { class: "form-horizontal"}) do |f| %>
         <% if @user.errors.any? %>
           <div id="error_explanation">
             <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
             <ul>
-            <% @user.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
+              <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
             </ul>
           </div>
         <% end %>
 
-        <div class="field">
-          <%= f.label :nombre %><br />
-          <%= f.text_field :nombre, :autofocus => true %>
-        </div>
-        <div class="field">
-          <%= f.label :ap1 %><br />
-          <%= f.text_field :ap1 %>
-        </div>
-        <div class="field">
-          <%= f.label :ap2 %><br />
-          <%= f.text_field :ap2 %>
-        </div>
-        <div class="field">
-          <%= f.label :fechaNac %><br />
-          <%= f.date_select :fechaNac %>
+        <div class="form-group">
+          <%= f.label :nombre, :class => "col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= f.text_field :nombre, :class => "form-control", :autofocus => true %>
+          </div>
         </div>
 
-        <%= f.hidden_field :padre_id %>
-        <br>
+        <div class="form-group">
+          <%= f.label :ap1, :class => "col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= f.text_field :ap1, :class => "form-control" %>
+          </div>
+        </div>
 
-        <div class="actions">
-          <%= f.submit %>
+        <div class="form-group">
+          <%= f.label :ap2, :class => "col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= f.text_field :ap2, :class => "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :fechaNac, :class => "col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= f.date_select :fechaNac, :class => "form-control", start_year: (Time.now - 100.year).year, end_year: Time.now.year  %>
+          </div>
+        </div>
+
+        <%#= f.date_select :fechaNac, :class => "form-control", start_year: (Time.now - 100.year).year, end_year: Time.now.year %>
+
+
+     <!--   <div class="form-group">
+          <label class="control-label col-xs-3">Date of Birth:</label>
+          <div class="col-xs-3">
+              <select class="form-control">
+                  <option>Date</option>
+              </select>
+          </div>
+          <div class="col-xs-3">
+              <select class="form-control">
+                  <option>Month</option>
+              </select>
+          </div>
+          <div class="col-xs-3">
+              <select class="form-control">
+                  <option>Year</option>
+              </select>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label for="birthday" class="col-xs-2 control-label">FechaNac</label>
+          <div class="col-sm-10">
+                  <div class="form-inline">
+                    <div class="form-group">
+                        <%#= f.text_field :fechaNac, :class => "form-control" %>
+                    </div>
+                  </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="birthday" class="col-xs-2 control-label">Birthday</label>
+          <div class="col-xs-10">
+            <div class="form-inline">
+              <div class="form-group">
+                  <input type="text" class="form-control" placeholder="year"/>
+              </div>
+              <div class="form-group">
+                  <input type="text" class="form-control" placeholder="month"/>
+              </div>
+              <div class="form-group">
+                  <input type="text" class="form-control" placeholder="day"/>
+              </div>
+            </div>
+          </div>
+        </div>-->
+
+
+
+
+        <div class="form-group">
+          <%= f.hidden_field :padre_id %>        
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+             <%= f.submit :class => "btn btn-default" %>
+          </div>
         </div>
       <% end %>
     </div>
   </div>
 </div>
+      
+ 
+<!--<div class="field">
+  <%#= f.label :ap1 %><br />
+  <%#= f.text_field :ap1 %>
+</div>
+<div class="field">
+  <%#= f.label :ap2 %><br />
+  <%#= f.text_field :ap2 %>
+</div>
+<div class="field">
+  <%#= f.label :fechaNac %><br />
+  <%#= f.date_select :fechaNac %>
+</div>
+<%#= f.hidden_field :padre_id %>
+-->
+<!--
+<form class="form-horizontal" role="form">
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">Sign in</button>
+    </div>
+  </div>
+</form>  -->

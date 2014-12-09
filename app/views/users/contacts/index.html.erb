@@ -1,31 +1,48 @@
 <!--<h1><%#= "#{@user.nombre}  contacts" %></h1> otra forma de meter el nombre-->
-<h1><%= @user.nombre %> <small class="grey">contacts</small></h1>
 
-<table>
-  <tr>
-    <th>Nombre</th>
-    <th>Numtlf</th>
-    <th>Padre</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="container">
+  <% if notice.nil? %>
+    
+  <% else %>
+    <div class="row"><br>
+      <div class="col-lg-3 border-green">
+        <p id="notice"><%= notice %></p>
+      </div>
+    </div>
+  <% end %>
+  <br>
 
-<% @contacts.each do |contact| %>
-  <tr>
-    <td><%= contact.nombre %></td>
-    <td><%= contact.numTlf %></td>
-    <td><%= contact.user.nombre %></td>
-    <td><%= link_to 'Show', user_contact_path(contact.user, contact) %></td>
-    <td><%= link_to 'Edit', edit_user_contact_path(contact.user, contact) %></td>
-    <td><%= link_to 'Destroy', user_contact_path(:user_id => contact.user_id, :id => contact), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+  <h1 class="centra"><%= @user.nombre %> <small class="grey">contacts</small></h1>
+  <div class="row">
+    <div class="col-lg-6 col-lg-offset-3">
+      <table class="table table-striped table-hover col-centered">
+        <tbody>
+          <tr>
+            <th>Nombre</th>
+            <th>Numtlf</th>
+            <th>Navegación</th>
+          </tr>
 
-<br/>
+          <% @contacts.each do |contact| %>
+            <tr>       <!--################### Navegacion con link_to ##########################-->
+              <td><%= contact.nombre %></td>
+              <td><%= contact.numTlf %></td>
+              <td><%= link_to ' Show', user_contact_path(contact.user, contact), :class => 'btn btn-primary btn-xs fa fa-info-circle' %>
+                  <%= link_to ' Edit', edit_user_contact_path(contact.user, contact), :class => 'btn btn-warning btn-xs fa fa-cogs' %>
+                  <%= link_to ' Delete', user_contact_path(:user_id => contact.user_id, :id => contact), :class => 'btn btn-danger btn-xs fa fa-trash', method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>                                   
+          <% end %>
+        </tbody>
+      </table>
 
-<%= link_to 'New Contact', new_user_contact_path(@user) %> -- 
-<%= link_to 'BackToUser', user_path(@user) %> -- 
-<%= link_to 'AllUsers', users_path %>
+      <br />
+    </div> 
+  </div>
 
+  <div class="centra border-green col-lg-6 col-lg-offset-3">
+    <%= link_to 'New Contact', new_user_contact_path(@user) %> -- 
+    <%= link_to 'BackToUser', user_path(@user) %> -- 
+    <%= link_to 'AllUsers', users_path %>
+  </div>
+
+</div>

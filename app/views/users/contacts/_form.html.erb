@@ -1,29 +1,44 @@
-<%= form_for([@user, @contact]) do |f| %>
-  <% if @contact.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4 col-lg-offset-4 centra">
+      <%= form_for([@user, @contact], html: { class: "form-horizontal"}) do |f| %>
+        <% if @contact.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
 
-      <ul>
-      <% @contact.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+            <ul>
+            <% @contact.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="form-group">
+          <%= f.label :nombre, :class => "col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= f.text_field :nombre, :class => "form-control", :autofocus => true %>
+          </div>
+        </div>
+
+         <div class="form-group">
+          <%= f.label :numTlf, :class => "col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= f.number_field :numTlf, :class => "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.hidden_field :user_id, :value => @user.id %><!-- campo oculto q se pasa para saber el padre -->
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+             <%= f.submit :class => "btn btn-default" %>
+          </div>
+        </div>
+
       <% end %>
-      </ul>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :nombre %><br />
-    <%= f.text_field :nombre, :autofocus => true %>
   </div>
-  <div class="field">
-    <%= f.label :numTlf %><br />
-    <%= f.number_field :numTlf %>
-  </div>
-  <div class="field">
-    <%= f.hidden_field :user_id, :value => @user.id %><br /><!-- campo oculto q se pasa para saber el padre -->
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

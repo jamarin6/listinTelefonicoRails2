@@ -1,6 +1,9 @@
-<h1>Editing contact</h1>
+<h1 class="centra">Editing contact</h1><br>
 
 <%= render 'form' %>
+<br>
 
-<%= link_to 'Show', [@contact.user, @contact] %> |
-<%= link_to 'Back', user_contacts_path(@contact.user) %>
+<div class="centra">
+	<%= link_to 'Show', [@contact.user, @contact] %> |
+	<%= link_to 'Back', user_contacts_path(@contact.user) %>	
+</div>

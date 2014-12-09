@@ -1,30 +1,47 @@
-<p id="notice"><%= notice %></p>
+<br><br>
+<div class="container">
 
-<p>
-  <b>Nombre:</b>
-  <%= @contact.nombre %>
-</p>
+  <% if notice.nil? %>
+      
+  <% else %>
+    <div class="row">
+      <div class="col-lg-3 border-green">
+        <p id="notice"><%= notice %></p>
+      </div>
+    </div>
+  <% end %>
 
-<p>
-  <b>Numtlf:</b>
-  <%= @contact.numTlf %>
-</p>
+  <div class="row">
+    <div class="col-lg-4 col-lg-offset-4">    
+      <p class="centra">
+        <b>Nombre:</b>
+        <%= @contact.nombre %>
+      </p>
 
-<p>
-  <b>User:</b>
-  <%= @contact.user.nombre %>
-</p>
+      <p class="centra">
+        <b>Numtlf:</b>
+        <%= @contact.numTlf %>
+      </p>
 
-<p>
-  <b>Created at:</b>
-  <%= @contact.created_at %>
-</p>
+      <p class="centra">
+        <b>User:</b>
+        <%= link_to "#{@contact.user.nombre}", user_path(@contact.user) %>
+      </p>
 
-<p>
-  <b>Update at:</b>
-  <%= @contact.updated_at %>
-</p>
+      <p class="centra">
+        <b>Created at:</b>
+        <%= @contact.created_at %>
+      </p>
 
+      <p class="centra">
+        <b>Update at:</b>
+        <%= @contact.updated_at %>
+      </p>
+      <div class="centra border-green">
+        <%= link_to 'Edit', edit_user_contact_path(@contact.user, @contact) %> |
+        <%= link_to 'Back', user_contacts_path %>
+      </div>
+    </div>
+  </div>
 
-<%= link_to 'Edit', edit_user_contact_path(@contact) %> |
-<%= link_to 'Back', user_contacts_path %>
+</div>

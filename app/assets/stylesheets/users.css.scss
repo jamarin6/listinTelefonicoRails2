@@ -71,14 +71,14 @@ body {
   background-color: #66C285;
   margin-top: 12px;
 
-background: rgba(202,241,95,1);
-background: -moz-linear-gradient(-45deg, rgba(202,241,95,1) 0%, rgba(109,186,135,1) 100%);
-background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(202,241,95,1)), color-stop(100%, rgba(109,186,135,1)));
-background: -webkit-linear-gradient(-45deg, rgba(202,241,95,1) 0%, rgba(109,186,135,1) 100%);
-background: -o-linear-gradient(-45deg, rgba(202,241,95,1) 0%, rgba(109,186,135,1) 100%);
-background: -ms-linear-gradient(-45deg, rgba(202,241,95,1) 0%, rgba(109,186,135,1) 100%);
-background: linear-gradient(135deg, rgba(202,241,95,1) 0%, rgba(109,186,135,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#caf15f', endColorstr='#6dba87', GradientType=1 );
+  background: rgba(202,241,95,1);
+  background: -moz-linear-gradient(-45deg, rgba(202,241,95,1) 0%, rgba(109,186,135,1) 100%);
+  background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(202,241,95,1)), color-stop(100%, rgba(109,186,135,1)));
+  background: -webkit-linear-gradient(-45deg, rgba(202,241,95,1) 0%, rgba(109,186,135,1) 100%);
+  background: -o-linear-gradient(-45deg, rgba(202,241,95,1) 0%, rgba(109,186,135,1) 100%);
+  background: -ms-linear-gradient(-45deg, rgba(202,241,95,1) 0%, rgba(109,186,135,1) 100%);
+  background: linear-gradient(135deg, rgba(202,241,95,1) 0%, rgba(109,186,135,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#caf15f', endColorstr='#6dba87', GradientType=1 );
 
   -webkit-box-shadow: 5px 5px 5px 0px rgba(41,73,36,1);
   -moz-box-shadow: 5px 5px 5px 0px rgba(41,73,36,1);
@@ -95,6 +95,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#caf15f', end
 
 .noventa { /* para el listado de hijos q vaya un poco a la izq y se centre respecto del div en el q está */
   width: 90%;
+}
+
+.text-left {
+  text-align: left;
 }
 
 
