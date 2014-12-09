@@ -23,11 +23,11 @@
         <% @users.each do |user| %>
           <tr>       <!--################### Navegacion con link_to ##########################-->
             <td><%= user.nombre + " " + user.ap1 + " " + user.ap2%></td>
-            <td><%= link_to '', user_path(user.id), method: :get, :class => 'btn btn-primary btn-xs fa fa-info-circle' %>   
-                <%= link_to '', edit_user_path(user), method: :get, :class => 'btn btn-warning btn-xs fa fa-cogs' %>
+            <td><%= link_to ' Info', user_path(user.id), method: :get, :class => 'btn btn-primary btn-xs fa fa-info-circle' %>   
+                <%= link_to ' Edit', edit_user_path(user), method: :get, :class => 'btn btn-warning btn-xs fa fa-cogs' %>
                 <%= link_to '', user, method: :get, :class => 'btn btn-danger btn-xs fa fa-trash', method: :delete, data: { confirm: 'Are you sure?' } %>
-                <%= link_to '', user_contacts_path(:user_id => user.id), method: :get, :class => 'btn btn-info btn-xs fa fa-phone-square' %>
-                <%= link_to 'New', new_user_path(:padre_id => user.id), method: :get, :class => 'btn btn-success btn-xs fa fa-plus fa fa-male' %>
+                <%= link_to ' Listing', user_contacts_path(:user_id => user.id), method: :get, :class => 'btn btn-info btn-xs fa fa-phone-square' %>
+                <%= link_to ' New', new_user_path(:padre_id => user.id), method: :get, :class => 'btn btn-success btn-xs fa fa-plus fa fa-male' %>
             </td>
           </tr>                             
        
