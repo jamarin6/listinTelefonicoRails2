@@ -37,10 +37,15 @@
         <%= @user.id %>
       </p>
 
+      <!--<p class="centra">
+        <b>padre_id:</b>
+        <%#= @user.padre_id %>
+      </p>-->
+
       <p class="centra">
         <b>Father:</b>
         <% if @noFather %> <!-- si no hay padre de ese user es un superUser -->
-          SuperUser (no father)
+          Super User (no father) 
         <% else %> <!--si hay padre se pinta su nombre -->
           <%= link_to @father_user.nombre, user_path(@user.padre_id) %>
         <% end %>

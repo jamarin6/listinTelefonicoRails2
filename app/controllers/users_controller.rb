@@ -21,8 +21,11 @@ class UsersController < ApplicationController
 
     if (@father_user == nil) #no hay user padre
       @noFather = true
-    else #hay user
+    elsif (@user.id == @father_user.id) # si el padre y el user son el mismo #habrá q cambiar esto, xq el superUser tendrá padre:nil?
+      @superUser = true
+    else #hay user normal, no es superUser y tiene padre
       @noFather = false
+      @superUser = false
     end
 
     @userSons = User.where(padre_id: @user.id) #cojo los hijos de ese user
@@ -52,15 +55,15 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    #TODO: comprobar q el padre exite
     father = User.find(params[:user][:padre_id]) rescue nil # ojo aqui q el parametro :padre_id viene asociado a un :user
                                                             # x eso se recoge con "params[:user][:padre_id]"
-
-    if (father.nil? & !(set_users_empty)) # si el padre no existe habiendo users, no crear user xq nos están metiendo un padre_id malo
-                                          # y también mirar q User no esté vacío, xq si está vacío es q no hay users
-                                          # y debería dejar entonces pasar al "else" para crear un user-superUser
+    if (father.nil? & !(@users_empty)) # si el padre no existe habiendo users, no crear user xq nos están metiendo un padre_id malo
+      # y me manda a lista d users para q elija otro user para crear un hijo, 
       redirect_to users_path, notice: "His father does not exist!!!"
+    elsif (!(father.nil?) & (@users_empty)) # o si habiendo padre no hay users tampoco crear
+      redirect_to users_path, notice: "His father exists, but users list is empty. Wrong way!!!"
     else
+      # se crea el user xq... o bien existen el padre y hay users, o bien ni padre ni users y lo q se crea es el superUser
       @user = User.new(params[:user])
   
       if @user.save
@@ -113,6 +116,7 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
     @user = User.find(params[:id])
+    # meter comprobacion para q no borre un user q tenga hijos
     @user.destroy
 
     respond_to do |format|
