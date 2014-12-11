@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body {
-	background-color: #A3DAB6;
+  background-color: #CEEBF3;
 }
 
 .SuperUser {
@@ -26,7 +26,8 @@ body {
 .table tbody tr:hover td {
   /*background-color: #66C285;*/
   /*background-color: #339e6b;*/
-  background: linear-gradient(to bottom, #A3DAB6 0%, #337D4C 100%);
+  /*background: linear-gradient(to bottom, #CEEBF3 0%, #CEEBF3 100%);*/
+  background-color: #72A1BB;
   /*background-color: #FFD633;*/
 }
 
@@ -34,56 +35,47 @@ body {
 
 .table-striped > tbody > tr:nth-child(odd), .table-striped > tbody > tr:nth-child(n) {
   /*background-color: #B8B8B8;*/
-  background-color: #7FE67F;
+  background-color: #8ED6EC; /*color lineas impares (no cuenta cabeza de tabla) */
   border: solid 1px black;
   /*border-radius: 25px;*/
  
   td {
-  border: solid 1px #A3DAB6;
+  border: solid 1px #CEEBF3;
   border-radius: 25px;
   }
   th {
-  border: solid 8px #A3DAB6;
+  border: solid 4px #CEEBF3;
   border-radius: 25px;
-  background-color: #337D4C;
+  background-color: #5AB8EB; /* color cabeza de tabla 428bca*/
   }
 }
+
+
 
 .opacidad {
   opacity: 0.92;
 }
 
 .myHeader {
-  border-bottom-color: #2E9C53;
+  border-bottom-color: #5bc0de;
   border-bottom-width: 4px;
   border-radius: 0px 0px 60px 60px;
 }
 
 .myFooter {
-  border-top-color: #2E9C53;
+  /*border-top-color: #2E9C53;*/
+  border-top-color: #5bc0de; /*un pokito mas claro #8ED6EC y mas oscuro #428bca */
   border-top-width: 4px;
   border-radius: 60px 60px 0px 0px;
 }
 
-.border-green {
-  border: solid 1px #66C285;
+.box-blue-round {
+  border: solid 1px #CCE7F5;
   border-radius: 80px 0px 80px 0px;
-  background-color: #66C285;
+  background-color: #8ED6EC;
   margin-top: 12px;
-
-  background: rgba(202,241,95,1);
-  background: -moz-linear-gradient(-45deg, rgba(202,241,95,1) 0%, rgba(109,186,135,1) 100%);
-  background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(202,241,95,1)), color-stop(100%, rgba(109,186,135,1)));
-  background: -webkit-linear-gradient(-45deg, rgba(202,241,95,1) 0%, rgba(109,186,135,1) 100%);
-  background: -o-linear-gradient(-45deg, rgba(202,241,95,1) 0%, rgba(109,186,135,1) 100%);
-  background: -ms-linear-gradient(-45deg, rgba(202,241,95,1) 0%, rgba(109,186,135,1) 100%);
-  background: linear-gradient(135deg, rgba(202,241,95,1) 0%, rgba(109,186,135,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#caf15f', endColorstr='#6dba87', GradientType=1 );
-
-  -webkit-box-shadow: 5px 5px 5px 0px rgba(41,73,36,1);
-  -moz-box-shadow: 5px 5px 5px 0px rgba(41,73,36,1);
-  box-shadow: 5px 5px 5px 0px rgba(41,73,36,1);
 }
+  
 
 .centra-derecha {
   text-align: left;

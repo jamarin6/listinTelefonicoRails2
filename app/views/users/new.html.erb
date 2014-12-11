@@ -3,9 +3,12 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-6 col-lg-offset-3">
-      <div class="border-green">
+      <div class="box-blue-round">
 				<h1 class="centra">New user</h1>
-				<% if (@user.id == nil) %><h4 class="centra">(Super User)</h4><% end %>
+
+				<% if (@user.padre_id == nil) %>
+					<h4 class="centra">(Super User)</h4>
+				<% end %>
 
 				<%= render 'form' %>
 
@@ -21,18 +24,18 @@
 	<div class="row">
 		<div class="col-lg-4 col-lg-offset-4">
 			<div class="row">
-				<div class="col-lg-4 white-box-link centra">
+				<div class="col-lg-4 box-blue-round centra">
 					<%= link_to 'Back', users_path %>
 				</div>
 				 
-				<% if (@user.id != nil) %>
+				<% if (@user.padre_id != nil) %>
 
-					<div class="col-lg-4 white-box-link centra">
+					<div class="col-lg-4 box-blue-round centra">
 						<%= link_to 'Show Creator', user_path(@user.padre_id) %>
 					</div>
 				<% end %>
 
-				<div class="col-lg-4 white-box-link centra">
+				<div class="col-lg-4 box-blue-round centra">
 					<%= link_to 'Welcome', root_path %>	
 				</div>				
 			</div>

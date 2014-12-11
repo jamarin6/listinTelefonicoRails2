@@ -5,7 +5,7 @@
       
   <% else %>
     <div class="row">
-      <div class="col-lg-3 border-green">
+      <div class="col-lg-3 box-blue-round">
         <p id="notice"><%= notice %></p>
       </div>
     </div>
@@ -37,7 +37,7 @@
         <b>Update at:</b>
         <%= @contact.updated_at %>
       </p>
-      <div class="centra border-green">
+      <div class="centra box-blue-round">
         <%= link_to 'Edit', edit_user_contact_path(@contact.user, @contact) %> |
         <%= link_to 'Back', user_contacts_path %>
       </div>
