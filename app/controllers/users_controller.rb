@@ -59,15 +59,15 @@ class UsersController < ApplicationController
                                                             # x eso se recoge con "params[:user][:padre_id]"
     if (father.nil? & !(@users_empty)) # si el padre no existe habiendo users, no crear user xq nos están metiendo un padre_id malo
       # y me manda a lista d users para q elija otro user para crear un hijo, 
-      redirect_to users_path, notice: "His father does not exist!!!"
+      redirect_to users_path, notice: " His father does not exist!!!"
     elsif (!(father.nil?) & (@users_empty)) # o si habiendo padre no hay users tampoco crear
-      redirect_to users_path, notice: "His father exists, but users list is empty. Wrong way!!!"
+      redirect_to users_path, notice: " His father exists, but users list is empty. Wrong way!!!"
     else
       # se crea el user xq... o bien existen el padre y hay users, o bien ni padre ni users y lo q se crea es el superUser
       @user = User.new(params[:user])
   
       if @user.save
-        redirect_to user_path(@user.id), notice: 'User was successfully created.' 
+        redirect_to user_path(@user.id), notice: ' User was successfully created.' 
       else
         render action: "new"  #me renderiza al new con los valores q ya estén tras el _form
       end

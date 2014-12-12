@@ -1,54 +1,53 @@
-
-      <%= form_for(@user, html: { class: "form-horizontal"}) do |f| %>
-        <% if @user.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-            <ul>
-              <% @user.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-              <% end %>
-            </ul>
-          </div>
+<%= form_for(@user, html: { class: "form-horizontal"}) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
         <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-        <div class="form-group">
-          <%= f.label :nombre, :class => "col-sm-2 control-label" %>
-          <div class="col-sm-10">
-            <%= f.text_field :nombre, :class => "form-control", :autofocus => true %>
-          </div>
-        </div>
+  <div class="form-group">
+    <%= f.label :nombre, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :nombre, :class => "form-control", :autofocus => true %>
+    </div>
+  </div>
 
-        <div class="form-group">
-          <%= f.label :ap1, :class => "col-sm-2 control-label" %>
-          <div class="col-sm-10">
-            <%= f.text_field :ap1, :class => "form-control" %>
-          </div>
-        </div>
+  <div class="form-group">
+    <%= f.label :ap1, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :ap1, :class => "form-control" %>
+    </div>
+  </div>
 
-        <div class="form-group">
-          <%= f.label :ap2, :class => "col-sm-2 control-label" %>
-          <div class="col-sm-10">
-            <%= f.text_field :ap2, :class => "form-control" %>
-          </div>
-        </div>
+  <div class="form-group">
+    <%= f.label :ap2, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :ap2, :class => "form-control" %>
+    </div>
+  </div>
 
-        <div class="form-group">
-          <%= f.label :fechaNac, :class => "col-sm-2 control-label" %>
-          <div class="col-sm-10">
-            <%#= f.date_select :fechaNac, {:class => "select birthday"}    %>
-              <%= f.date_select(:fechaNac, { start_year: (Time.now - 100.year).year, end_year: Time.now.year}, {:class => "form-control select-date"}) %>
-          </div>
-        </div>
+  <div class="form-group">
+    <%= f.label :fechaNac, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%#= f.date_select :fechaNac, {:class => "select birthday"}    %>
+        <%= f.date_select(:fechaNac, { start_year: (Time.now - 100.year).year, end_year: Time.now.year}, {:class => "form-control select-date"}) %>
+    </div>
+  </div>
 
-        <%#= f.date_select :fechaNac, :class => "form-control", start_year: (Time.now - 100.year).year, end_year: Time.now.year %>
+  <%#= f.date_select :fechaNac, :class => "form-control", start_year: (Time.now - 100.year).year, end_year: Time.now.year %>
 
-        <div class="form-group">
-          <%= f.hidden_field :padre_id %>        
-        </div>
+  <div class="form-group">
+    <%= f.hidden_field :padre_id %>        
+  </div>
 
-        <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-10">
-             <%= f.submit :class => "btn btn-default" %>
-          </div>
-        </div>
-      <% end %>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+       <%= f.submit :class => "btn btn-default" %>
+    </div>
+  </div>
+<% end %>

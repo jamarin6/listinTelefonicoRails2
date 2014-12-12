@@ -14,7 +14,7 @@
 	    <div class="navbar-header">      
 	      <a href="/">
 	        <!-- <img src="/assets/phoneverde.png" alt="HTML tutorial" style="width:42px;height:42px;padding-top:2px"> -->
-	        <i class="fa fa-phone"></i>
+	        <i class="logo-top fa fa-phone fa-3x"></i>
 	      </a>
 	    </div>
 
@@ -25,24 +25,24 @@
 			<!--<a href="#">All Contacts</a>--></li>
 	      </ul>
 	      <ul class="nav navbar-nav navbar-right">
-	        <li><a href="http://www.paginasamarillas.es/"><i class="fa fa-phone "></i> Paginas Amarillas</a></li>
+	        <li><a href="http://www.paginasamarillas.es/"><i class="fa fa-phone blue"></i> Paginas Amarillas</a></li>
 	      </ul>
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container -->
 	</nav><br><br>
 																		<!-- fin header -->
 
-	<% if notice %>
+	<% if notice %> <!-- notificaciones -->
 		<div class="notification-box col-lg-3 box-blue-round" id="notification_box">
 			<p class="fa fa-info-circle" id="notice"><%= notice %></p>
 		</div>
 
+			<!-- con jQuery hago un setTimeout q es q en 3000 ms haga lo de las llaves (un fadeOut de 2000 ms, esto es desvanecerse en 2sg) -->
 		<script type="text/javascript">
-			setTimeout(function(){ $("#notification_box").remove();}, 3000);
+			setTimeout(function(){ $("#notification_box").fadeOut(2000);}, 2000); 
 		</script>
 	<% end %>
 
-<%#= flash[:notice] %> <!-- esto es para q salga x aqui los notice (error or success) -->
 <%= yield %>
 <br><br><br>
 
@@ -51,11 +51,11 @@
   <div class="container">
   	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">All contacs</a></li>
+        <li class="active"><%= link_to "Home", root_path %></li>
+        <li><%= link_to "All Contacts", admin_contacts_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="https://twitter.com/jamarinhidalgo"><i class="fa fa-twitter-square"></i> @jamarinhidalgo</a></li>
+        <li><a href="https://twitter.com/jamarinhidalgo"><i class="fa fa-twitter-square blue  logo-bottom"></i> @jamarinhidalgo</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div>
