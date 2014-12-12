@@ -66,7 +66,7 @@ class Users::ContactsController < ApplicationController
     @contact = Contact.find(params[:id])
 
     respond_to do |format|
-      if @contact.update_attributes(params[:contact])
+      if @contact.update_attributes(params[:contact].except(:user_id)) # except es para q no me cambien el user_id
         format.html { redirect_to user_contact_path(@user, @contact), notice: 'Contact was successfully updated.' }
         format.json { head :no_content }
       else

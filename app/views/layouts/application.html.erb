@@ -12,8 +12,9 @@
 	  <div class="container">
 	    <!-- Brand and toggle get grouped for better mobile display -->
 	    <div class="navbar-header">      
-	      <a href="#">
-	        <img src="/assets/phoneverde.png" alt="HTML tutorial" style="width:42px;height:42px;padding-top:2px">
+	      <a href="/">
+	        <!-- <img src="/assets/phoneverde.png" alt="HTML tutorial" style="width:42px;height:42px;padding-top:2px"> -->
+	        <i class="fa fa-phone"></i>
 	      </a>
 	    </div>
 
@@ -30,6 +31,16 @@
 	  </div><!-- /.container -->
 	</nav><br><br>
 																		<!-- fin header -->
+
+	<% if notice %>
+		<div class="notification-box col-lg-3 box-blue-round" id="notification_box">
+			<p class="fa fa-info-circle" id="notice"><%= notice %></p>
+		</div>
+
+		<script type="text/javascript">
+			setTimeout(function(){ $("#notification_box").remove();}, 3000);
+		</script>
+	<% end %>
 
 <%#= flash[:notice] %> <!-- esto es para q salga x aqui los notice (error or success) -->
 <%= yield %>

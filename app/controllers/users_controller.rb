@@ -102,7 +102,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     respond_to do |format|
-      if @user.update_attributes(params[:user].except(:padre_id)) 
+      if @user.update_attributes(params[:user].except(:padre_id)) # except es para q no me cambien el padre_id
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
@@ -116,13 +116,18 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
     @user = User.find(params[:id])
-    # meter comprobacion para q no borre un user q tenga hijos
-    @user.destroy
-
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully deleted.' }
-      format.json { head :no_content }
+    # compruebo q no tenga hijos el user
+    children_empty = User.where(padre_id: @user.id).count == 0 #será true si es = 0, osea si no tiene hijos
+    
+    if children_empty #si no tiene hijos se borra el user y notifica
+      @user.destroy
+      message = ' User was successfully deleted.'
+    else  #si no es así, notificamos sin borrar
+      message = ' This user has children, you can not delete him'      
     end
+
+    redirect_to users_path, notice: message 
+
   end
 
   private 
@@ -130,5 +135,4 @@ class UsersController < ApplicationController
   def set_users_empty 
     @users_empty = (User.count == 0)
   end
-
 end

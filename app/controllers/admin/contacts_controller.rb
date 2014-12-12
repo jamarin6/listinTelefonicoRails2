@@ -67,7 +67,7 @@ class Admin::ContactsController < ApplicationController
     @contact = Contact.find(params[:id])
 
     respond_to do |format|
-      if @contact.update_attributes(params[:Contact])
+      if @contact.update_attributes(params[:contact])
         format.html { redirect_to ([:admin, @contact]), notice: 'Contact was successfully updated.' }
         format.json { head :no_content }
       else
