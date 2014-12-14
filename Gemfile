@@ -25,6 +25,10 @@ gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 3.2.0' ##
 gem "font-awesome-rails"
 
+# Pagination
+gem 'kaminari'
+gem 'kaminari-bootstrap'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

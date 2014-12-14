@@ -5,7 +5,8 @@ class UsersController < ApplicationController
   before_filter :set_users_empty, :only=>[:index, :create, :update]
   
   def index
-    @users = User.all
+    # @users = User.all
+    @users = User.order(:nombre).page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb

@@ -3,7 +3,7 @@ class Users::ContactsController < ApplicationController
   # GET /contacts.json
   def index
     @user = User.find(params[:user_id])
-    @contacts = @user.contacts
+    @contacts = @user.contacts.order(:nombre).page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb
