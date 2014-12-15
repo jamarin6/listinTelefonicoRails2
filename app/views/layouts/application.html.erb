@@ -33,14 +33,14 @@
 																		<!-- fin header -->
 
 	<% if notice %> <!-- notificaciones -->
-		<div class="notification-box col-lg-3 box-blue-round" id="notification_box">
+		<div class="notification-box col-xs-3 col-sm-3 col-md-3 col-lg-3 box-blue-round" id="notification_box">
 			<p class="fa fa-info-circle" id="notice"><%= notice %></p>
 		</div>
 
-			<!-- con jQuery hago un setTimeout q es q en 3000 ms haga lo de las llaves (un fadeOut de 2000 ms, esto es desvanecerse en 2sg) -->
+			<!-- con jQuery hago un setTimeout q es q en 2000 ms haga lo de las llaves (un fadeOut de 2000 ms, esto es desvanecerse en 2sg) 
 		<script type="text/javascript">
 			setTimeout(function(){ $("#notification_box").fadeOut(2000);}, 2000); 
-		</script>
+		</script>-->
 	<% end %>
 
 <%= yield %>
