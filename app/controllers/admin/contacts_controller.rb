@@ -10,7 +10,7 @@ class Admin::ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.json
   def index
-    @contacts = Contact.order(:nombre)
+    @contacts = Contact.order(:nombre) # todos los contactos por orden alfabético del nombre
 
     respond_to do |format|
       format.html # index.html.erb

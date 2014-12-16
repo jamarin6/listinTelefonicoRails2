@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  # GET /users
-  # GET /users.json
 
   before_filter :set_users_empty, :only=>[:index, :create, :update]
   
@@ -14,19 +12,17 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET /users/1
-  # GET /users/1.json
   def show
     @user = User.find(params[:id])
     @father_user = User.find(@user.padre_id) rescue nil
 
     if (@father_user == nil) #no hay user padre
       @noFather = true
-    elsif (@user.id == @father_user.id) # si el padre y el user son el mismo #habrá q cambiar esto, xq el superUser tendrá padre:nil?
-      @superUser = true
-    else #hay user normal, no es superUser y tiene padre
+    #elsif (@user.id == @father_user.id) # si el padre y el user son el mismo #habrá q cambiar esto, xq el superUser tendrá padre:nil?
+    #  @superUser = true
+    else #hay user normal, tiene padre
       @noFather = false
-      @superUser = false
+      #@superUser = false
     end
 
     @userSons = User.where(padre_id: @user.id) #cojo los hijos de ese user
@@ -37,8 +33,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET /users/new
-  # GET /users/new.json
   def new
     @user = User.new(:padre_id => params[:padre_id])
 
@@ -48,13 +42,10 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
   end
 
-  # POST /users
-  # POST /users.json
   def create
     father = User.find(params[:user][:padre_id]) rescue nil # ojo aqui q el parametro :padre_id viene asociado a un :user
                                                             # x eso se recoge con "params[:user][:padre_id]"
@@ -97,8 +88,6 @@ class UsersController < ApplicationController
 
   end # end del create
 
-  # PUT /users/1
-  # PUT /users/1.json
   def update
     @user = User.find(params[:id])
 
@@ -113,8 +102,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.json
   def destroy
     @user = User.find(params[:id])
     # compruebo q no tenga hijos el user
