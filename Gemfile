@@ -26,7 +26,7 @@ end
 
 gem 'jquery-rails'
 # To use Bootstrap ##
-gem 'bootstrap-sass', '~> 3.2.0' ##
+gem 'bootstrap-sass', '3.1.1.0' ##
 gem "font-awesome-rails"
 
 # Pagination
