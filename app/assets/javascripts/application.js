@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-sprockets
+//= require bootstrap
 //= require_tree .
 
 setTimeout(function(){ $("#notification_box").fadeOut(3000);}, 3000); 
