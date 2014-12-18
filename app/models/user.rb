@@ -14,6 +14,10 @@
 
 class User < ActiveRecord::Base
   has_many :contacts, :dependent => :destroy
+
+  belongs_to :padre, :class_name => "User" 
+  has_many :hijos, :class_name => "User" , :foreign_key => "padre_id"
+
   attr_accessible :ap1, :ap2, :fechaNac, :nombre, :padre_id
 
   validates :nombre, :ap1, :ap2, :fechaNac, presence: true

@@ -3,6 +3,7 @@
 
   <div class="row">
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xs-offset-4 col-sm-offset-4 col-md-offset-4 col-lg-offset-4">
+      <h1 class="centra"><tt><u>User Info</u></tt></h1><br>
       <p class="centra">
         <b>Nombre:</b>
         <%= @user.nombre %>
@@ -28,12 +29,23 @@
         <%= @user.id %>
       </p>
 
-      <p class="centra">
+      <!--<p class="centra">
         <b>Father:</b>
-        <% if @noFather %> <!-- si no hay padre de ese user es un superUser -->
-          Super User (no father) 
+        <%# if @user.padre.nil? %>--> <!-- si no hay padre de ese user es un superUser -->
+          <!--Super User (no father) -->
+        <%# else %> <!--si hay padre se pinta su nombre -->
+          <!--<%#= link_to @user.padre.nombre, user_path(@user.padre.id) %>
+          <%#= debugger %>
+        <%# end %>
+      </p>-->
+
+      <p class="centra">
+
+        <% if @user.padre.nil? %> <!-- si no hay padre de ese user es un superUser -->
+          <s><b>Father</b></s><b> (Super User)</b>
         <% else %> <!--si hay padre se pinta su nombre -->
-          <%= link_to @father_user.nombre, user_path(@father_user.id) %>
+          <b>Father:</b>
+          <%= link_to @user.padre.nombre, user_path(@user.padre.id) %>
           <%#= debugger %>
         <% end %>
       </p>
@@ -46,11 +58,11 @@
         <p class="centra ">
           <b>----- Created sons: -----</b>
 
-          <% if @userSons.count == 0 %> <!-- si no tiene hijos lo informo -->
+          <% if @user.hijos.count == 0 %> <!-- si no tiene hijos lo informo -->
             <h3 class="centra">----- No tiene hijos -----</h3>
           <% else %>
             <ol class="noventa">
-              <% @userSons.each do |son| %>
+              <% @user.hijos.each do |son| %>
                 <% if !(son.id == @user.id) %><!-- xa q no muestre el superUser a él mismo como hijo (xq su id es = al del hijo) -->
                   <li class="centra"><%= link_to son.nombre, user_path(:id => son.id, :padre_id => son.padre_id) %></li>
                 <% end %>
