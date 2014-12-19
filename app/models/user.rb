@@ -15,9 +15,9 @@
 class User < ActiveRecord::Base
   has_many :contacts, :dependent => :destroy
 
-  belongs_to :padre, :class_name => "User" 
-  has_many :hijos, :class_name => "User" , :foreign_key => "padre_id"
-
+  belongs_to :padre, :class_name => "User" # asi le digo q un User tiene un padre q es un User
+  has_many :hijos, :class_name => "User" , :foreign_key => "padre_id" # asi le digo q un User puede tener varios hijos q son users
+  # y así puedo hacer querys tipo: @user = User.includes(:padre, :hijos, :contacts).find(params[:id])
   attr_accessible :ap1, :ap2, :fechaNac, :nombre, :padre_id
 
   validates :nombre, :ap1, :ap2, :fechaNac, presence: true

@@ -58,6 +58,8 @@ group :development, :test do
  gem 'rails_best_practices'     # gema para control de calidad del codigo: bundle exec rails_best_practices .
  gem "letter_opener" #gema para visualizar mails
  gem 'byebug'
+
+ gem 'meta_request' #desde la consola en el apartado 'rails' puedes ver las querys con su coste entre otras cosas
  
  gem 'xray-rails'
 
