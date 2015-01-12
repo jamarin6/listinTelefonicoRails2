@@ -1,7 +1,6 @@
-# Pagination for [Twitter Bootstrap 3](http://getbootstrap.com/components/#pagination)
+# Explicación listinTelefonicoRails2
 
-With support for:
+Ésta versión 'listinTelefonicoRails2' es menos usable pero más avanzada técnicamente que 'listinTelefonicoRails' y sirve también de gran ejemplo para los novatos de rails, puedes ver el código aquí (), y puedes (sin login) crear 'users' que tengan a su vez 'contacts', sólo hay un 'superUser' que es el primer 'user' de todos y no tiene 'padre', a partir de ese 'superUser' puedes crear 'users hijos' que a su vez pueden tener otros 'user hijos' de los que ellos serán 'padres'. No se puede borrar un 'user' con 'hijos', y si se borra un 'user' que sea posible borrar también lo harán sus contactos de la base de datos (si existen). Está todo controlado con las restricciones necesarias para que no te puedan 'trolear', como cambiandote un id de un user por otro o por uno inexistente.
 
-- erb
-- haml
-- slim
+Es un pequeño ejemplo muy simple de un listín telefónico realizado con el framework de programación 'Ruby on Rails'. Es un pequeño ejercicio en el que puedes ver ejemplos de como funciona y quizá te pueda ayudar en algunos aspectos si empiezas con RoR. Para darle forma rápidamente he implementado a Bootstrap, gran framework para la parte de front. Aunque en mi github (https://github.com/jamarin6) hay dos versiones de este 'listinTelefonicoRails', en ésta página (https://listin.herokuapp.com/) se ve la versión más simple (que es la mas usable también), en la que te registras como 'user' (usuario) y puedes almacenar 'contacts' (contactos). Tenemos también una función de paginación con la utilización de la gema 'kaminari' en la que ponemos 3 registros por página para ver rápido su funcionalidad. Para el despliegue se utilizó 'Heroku' debido a su simplicidad de despliegue... y que en principio es gratuito ;) 
+De ésta manera puedes también almacenar si quieres tus contactos por si quieres tenerlos a salvo fuera de tu dispositivo móvil.
