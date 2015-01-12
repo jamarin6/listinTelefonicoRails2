@@ -33,11 +33,17 @@
 			</section>
 
 		</div>
-		<div class="col-lg-6">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,
+		<div class="col-lg-6">Ésta versión 'listinTelefonicoRails2' es menos usable pero más avanzada técnicamente que 'listinTelefonicoRails' y sirve también de gran ejemplo para los novatos de rails, puedes ver el código aquí (), y puedes (sin login) crear 'users' que tengan a su vez 'contacts', sólo hay un 'superUser' que es el primer 'user' de todos y no tiene 'padre', a partir de ese 'superUser' puedes crear 'users hijos' que a su vez pueden tener otros 'user hijos' de los que ellos serán 'padres'. No se puede borrar un 'user' con 'hijos', y si se borra un 'user' que sea posible borrar también lo harán sus contactos de la base de datos (si existen). Está todo controlado con las restricciones necesarias para que no te puedan 'trolear', como cambiandote un id de un user por otro o por uno inexistente.
+
+		 Es un pequeño ejemplo muy simple de un listín telefónico realizado con el framework de programación 'Ruby on Rails'. Es un pequeño ejercicio en el que puedes ver ejemplos de como funciona y quizá te pueda ayudar en algunos aspectos si empiezas con RoR. Para darle forma rápidamente he implementado a Bootstrap, gran framework para la parte de front. Aunque en mi github (https://github.com/jamarin6) hay dos versiones de este 'listinTelefonicoRails', en ésta página (https://listin.herokuapp.com/) se ve la versión más simple (que es la mas usable también), en la que te registras como 'user' (usuario) y puedes almacenar 'contacts' (contactos). Tenemos también una función de paginación con la utilización de la gema 'kaminari' en la que ponemos 3 registros por página para ver rápido su funcionalidad. Para el despliegue se utilizó 'Heroku' debido a su simplicidad de despliegue... y que en principio es gratuito ;) 
+		De ésta manera puedes también almacenar si quieres tus contactos por si quieres tenerlos a salvo fuera de tu dispositivo móvil.
 		</div>
   </div>
 
-		<!-- <img src="/assets/moviles.jpg" class="img-rounded" alt="Responsive image" style="width:70%;height:30%;padding-top:2px"><br> -->
+		<!-- 
+
+
+		<img src="/assets/moviles.jpg" class="img-rounded" alt="Responsive image" style="width:70%;height:30%;padding-top:2px"><br> -->
   
 
 

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
-  before_filter :set_users_empty, :only=>[:index, :create, :update] #aunque solo lo utilizo en 'create' pero me vale de buen ejemplo
+  before_filter :set_users_empty, :only=>[:index, :create, :update] #aunque solo lo utilizo en 'create' pero me vale de buen ejemplo, en rails4 es before_action
+  before_filter :set_user, :except=>[:index, :show, :new, :create] #otra manera de hacerlo aqui se usa el :set_user en edit, update y destroy
   
   def index
     @users = User.order(:nombre).page params[:page]
@@ -15,7 +16,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def create
@@ -38,8 +38,6 @@ class UsersController < ApplicationController
   end # end del create
 
   def update
-    @user = User.find(params[:id])
-
     if @user.update_attributes(params[:user].except(:padre_id)) # except es para q no me cambien el padre_id del user
       redirect_to @user, notice: ' User was successfully updated.'
     else
@@ -48,7 +46,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
     # compruebo q no tenga hijos el user
     children_empty = User.where(padre_id: @user.id).count == 0 #será true si es = 0, osea si no tiene hijos
     
@@ -65,5 +62,9 @@ class UsersController < ApplicationController
 
   def set_users_empty 
     @users_empty = (User.count == 0)
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 end
